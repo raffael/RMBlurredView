@@ -12,7 +12,7 @@ The view can be easily customized to your needs:
 
 * **tintColor (NSColor)** A NSColor used a the background color for the view. Default: 70% White.
 
-**NOTE:** Can be used with (RMSecondaryScroller )[https://github.com/raffael/RMSecondaryScroller] to customize the height of NSScrollViews.
+**NOTE:** Can be used with RMSecondaryScroller (https://github.com/raffael/RMSecondaryScroller) to customize the height of NSScrollViews.
 
 ## Usage
 
