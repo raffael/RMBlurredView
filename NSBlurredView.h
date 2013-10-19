@@ -7,7 +7,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 // Make sure to import QuartzCore and add it to your Linked Libraries of your target
 #import <QuartzCore/QuartzCore.h>
 
@@ -24,4 +23,9 @@
 
 /** The blur radius defines the strength of the Gaussian Blur filter. The default value is 20.0. */
 @property (assign,nonatomic) float blurRadius;
+
+/** Use the following property names in the  User Defined Runtime Attributes in Interface Builder to set up your NSBlurredView on the fly. Note: The color can be set up, too, using 'tintColor'. */
+@property (strong,nonatomic) NSNumber *saturationFactorNumber;
+@property (strong,nonatomic) NSNumber *blurRadiusNumber;
+
 @end

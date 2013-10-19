@@ -49,14 +49,22 @@
 	[self resetFilters];
 }
 
+- (void) setBlurRadiusNumber:(NSNumber *)blurRadiusNumber {
+	[self setBlurRadius:blurRadiusNumber.floatValue];
+}
+
 - (void) setSaturationFactor:(float)saturationFactor {
 	// Setting the saturation factor also requires a resetting of the filters
 	_saturationFactor = saturationFactor;
 	[self resetFilters];
 }
 
+- (void) setSaturationFactorNumber:(NSNumber *)saturationFactorNumber {
+	[self setSaturationFactor:saturationFactorNumber.floatValue];
+}
+
 - (void) setUp {
-	// Instantiate a new CALayer and set it as the NSView's layer
+	// Instantiate a new CALayer and set it as the NSView's layer (layer-hosting)
 	CALayer *blurLayer = [CALayer layer];
 	[self setWantsLayer:YES];
 	[self setLayer:blurLayer];
@@ -69,6 +77,11 @@
 	// It's important to set the layer to mask to its bounds, otherwise the whole parent view might get blurred
 	[self.layer setMasksToBounds:YES];
 	
+	// To apply CIFilters on OS X 10.9, we need to set the property accordingly:
+	if ([self respondsToSelector:@selector(setLayerUsesCoreImageFilters:)]) {
+		[self setLayerUsesCoreImageFilters:YES];
+	}
+	
 	// Set the layer to redraw itself once it's size is changed
 	[self.layer setNeedsDisplayOnBoundsChange:YES];
 	
@@ -77,7 +90,7 @@
 }
 
 - (void) resetFilters {
-	
+
 	// To get a higher color saturation, we create a ColorControls filter
 	_saturationFilter = [CIFilter filterWithName:@"CIColorControls"];
 	[_saturationFilter setDefaults];
