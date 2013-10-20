@@ -1,17 +1,17 @@
 //
-//  NSBlurredView.m
+//  RMBlurredView.m
 //
 //  Created by Raffael Hannemann on 08.10.13.
 //  Copyright (c) 2013 Raffael Hannemann. All rights reserved.
 //
 
-#import "NSBlurredView.h"
+#import "RMBlurredView.h"
 
-#define kNSBlurredViewDefaultTintColor [NSColor colorWithCalibratedWhite:1.0 alpha:0.7]
-#define kNSBlurredViewDefaultSaturationFactor 2.0
-#define kNSBlurredViewDefaultBlurRadius 20.0
+#define kRMBlurredViewDefaultTintColor [NSColor colorWithCalibratedWhite:1.0 alpha:0.7]
+#define kRMBlurredViewDefaultSaturationFactor 2.0
+#define kRMBlurredViewDefaultBlurRadius 20.0
 
-@implementation NSBlurredView
+@implementation RMBlurredView
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -70,9 +70,9 @@
 	[self setLayer:blurLayer];
 	
 	// Set up the default parameters
-	_blurRadius = kNSBlurredViewDefaultBlurRadius;
-	_saturationFactor = kNSBlurredViewDefaultSaturationFactor;
-	[self setTintColor:kNSBlurredViewDefaultTintColor];
+	_blurRadius = kRMBlurredViewDefaultBlurRadius;
+	_saturationFactor = kRMBlurredViewDefaultSaturationFactor;
+	[self setTintColor:kRMBlurredViewDefaultTintColor];
 	
 	// It's important to set the layer to mask to its bounds, otherwise the whole parent view might get blurred
 	[self.layer setMasksToBounds:YES];
