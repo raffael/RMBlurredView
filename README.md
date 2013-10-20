@@ -16,7 +16,7 @@ The view can be easily customized to your needs:
 
 ## Usage
 
-Usage should be clear once you see the annotated header file.
+Usage should be clear once you see the annotated header file. Check out the (RMBlurredViewExample)[https://github.com/raffael/RMBlurredViewExample] project.
 
 ## Contact
 
