@@ -1,6 +1,6 @@
 # RMBlurredView
 
-This subclass of NSView can be used to get an iOS 7 like blurred background to mimic a frosted glass effect — on OS X! Check out the corresponding article on (Cocoanetics)[].
+This subclass of NSView can be used to get an iOS 7 like blurred background to mimic a frosted glass effect — on OS X! Check out the corresponding article on [Cocoanetics]().
 
 **NOTE:** The parent view of the RMBlurredView must be layer-backed to see the effect.
 
