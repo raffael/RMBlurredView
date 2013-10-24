@@ -65,9 +65,9 @@
 
 - (void) setUp {
 	// Instantiate a new CALayer and set it as the NSView's layer (layer-hosting)
-	CALayer *blurLayer = [CALayer layer];
+	_hostedLayer = [CALayer layer];
 	[self setWantsLayer:YES];
-	[self setLayer:blurLayer];
+	[self setLayer:_hostedLayer];
 	
 	// Set up the default parameters
 	_blurRadius = kRMBlurredViewDefaultBlurRadius;
@@ -79,7 +79,11 @@
 	
 	// To apply CIFilters on OS X 10.9, we need to set the property accordingly:
 	if ([self respondsToSelector:@selector(setLayerUsesCoreImageFilters:)]) {
-		[self setLayerUsesCoreImageFilters:YES];
+		BOOL flag = YES;
+		NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(setLayerUsesCoreImageFilters:)]];
+		[inv setSelector:@selector(setLayerUsesCoreImageFilters:)];
+		[inv setArgument:&flag atIndex:2];
+		[inv invokeWithTarget:self];
 	}
 	
 	// Set the layer to redraw itself once it's size is changed
@@ -90,7 +94,7 @@
 }
 
 - (void) resetFilters {
-
+	
 	// To get a higher color saturation, we create a ColorControls filter
 	_saturationFilter = [CIFilter filterWithName:@"CIColorControls"];
 	[_saturationFilter setDefaults];
@@ -102,7 +106,7 @@
 	[_blurFilter setValue:[NSNumber numberWithFloat:_blurRadius] forKey:@"inputRadius"];
 	
 	// Now we apply the two filters as the layer's background filters
-	[self.layer setBackgroundFilters:@[_saturationFilter,_blurFilter]];
+	[self.layer setBackgroundFilters:@[_saturationFilter, _blurFilter]];
 	
 	// ... and trigger a refresh
 	[self.layer setNeedsDisplay];
