@@ -4,6 +4,9 @@ This subclass of NSView can be used to get an iOS 7 like blurred background to m
 
 **NOTE:** The parent view of the RMBlurredView must be layer-backed to see the effect.
 
+![RMBlurredView, a NSView with blurred background](http://www.cocoanetics.com/files/Chat-Heads-Preview.jpg "Custom NSView subclass with blurred background")
+([Chat Heads](http://www.raffael.me/chatheads) with blurred title and bottom bar)
+
 The view can be easily customized to your needs:
 
 * **blurRadius (float)** A float indicating the strength of the blur effect. This will be directly passed as input parameter for the Gaussian blur CIFilter. Default: 20.0.
